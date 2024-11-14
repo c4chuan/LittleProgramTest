@@ -28,7 +28,7 @@ def get_dialoge_result(phone,cursor,num=4):
         result = json.loads(result)
         # 对对话进行过滤
         filtered_dialogue = [{item['role']: item['content']} for item in result]
-        return filtered_dialogue
+        return filtered_dialogue, int(len(result)/2)
     else:
         return "未查询到该用户对话数据"
 

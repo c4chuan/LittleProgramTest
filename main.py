@@ -12,8 +12,9 @@ if __name__ == '__main__':
 
         phone = input("请输入手机号后四位：")
         # 检查是否有重复数据，若有则判断多少位数合适
-        num_q = check_num_q(phone,cursor)
-        print(num_q)
-        print('该用户的对话数据为：'+str(get_dialoge_result(phone,cursor)))
+        # num_q = check_num_q(phone,cursor)
+        # print(num_q)
+        print('该用户的对话数据为：'+str(get_dialoge_result(phone,cursor)[0]))
+        print('该用户的对话轮数为：',get_dialoge_result(phone,cursor)[1])
         print('该用户的PHQ-9数据为：'+str(get_phq_result(phone,cursor)))
         print('该用户的GAD-7数据为：'+str(get_gad_result(phone,cursor)))
