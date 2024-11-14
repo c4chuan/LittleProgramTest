@@ -1,4 +1,5 @@
 import pymysql
+import json
 
 def get_phq_result(phone,cursor,num=4):
     sql = f"select * from `PHQ-9` where right(id,{num}) = '"+phone+"'"
@@ -24,7 +25,10 @@ def get_dialoge_result(phone,cursor,num=4):
     result = cursor.fetchall()
     if result:
         result = result[0][0]
-        return result
+        result = json.loads(result)
+        # 对对话进行过滤
+        filtered_dialogue = [{item['role']: item['content']} for item in result]
+        return filtered_dialogue
     else:
         return "未查询到该用户对话数据"
 
